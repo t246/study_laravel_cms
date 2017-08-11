@@ -14,32 +14,32 @@ use Illuminate\Http\Request;
 */
 
 Route::get('/', function () {
-    return view('books');
+    $books = Book::orderBy('created_at', 'asc')->get();
+    return view('books', [
+        'books' => $books
+    ]);
     //return view('welcome');
 });
 
 Route::post('/books', function(Request $request) {
+    $validator = Validator::make($request->all(), [
+        'item_name' => 'required|max:255',
+    ]);
+
+    if($validator->fails()) {
+        return redirect('/')->withInput()->withErrors($validator);
+    }
+
+    $books = new Book;
+    $books->item_name = $request->item_name;
+    $books->item_number = '1';
+    $books->item_amount = '1000';
+    $books->published = '2017-03-07 00:00:00';
+    $books->save();
+    return redirect('/');
     //
 });
 
 Route::delete('/book/{book}', function(Book $book) {
     //
-});
-
-Route::post('/book', function(Request $request) {
-    $validator = Validator::make($request->all(), [
-        'item_name' => 'require|max:255',
-    ]);
-
-    if($validation->fails()) {
-        return redirect('/')->withInput()->withErrors($validator);
-    }
-
-    $books = new Book;
-    $book->item_name = $request->item_name;
-    $book->item_number = '1';
-    $book->item_amount = '1000';
-    $book->published = '2017-03-07 00:00:00';
-    $book->save();
-    return redirect('/');
 });
