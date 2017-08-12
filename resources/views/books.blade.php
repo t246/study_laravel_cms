@@ -40,7 +40,7 @@
                                     <div>{{ $book->item_name }}</div>
                                 </td>
                                 <td>
-                                    <form action="{{ url('books/'.$book->id) }}" method="POST">
+                                    <form action="{{ url('book/'.$book->id) }}" method="POST">
                                         {{ csrf_field() }}
                                         {{ method_field('DELETE') }}
 
