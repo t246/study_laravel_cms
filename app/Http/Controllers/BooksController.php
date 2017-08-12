@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Book;
 use Validator;
+use Debugbar;
 
 class BooksController extends Controller
 {
@@ -16,6 +17,7 @@ class BooksController extends Controller
 
     public function index() {
         $books = Book::orderBy('created_at', 'asc')->paginate(3);
+        Debugbar::info($books);
         return view('books', [
             'books' => $books
         ]);
