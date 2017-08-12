@@ -19,7 +19,7 @@ class BooksController extends Controller
         $books = Book::orderBy('created_at', 'asc')->paginate(3);
         Debugbar::info($books);
         return view('books', [
-            'books' => $books
+            'books' => $books,
         ]);
     }
 

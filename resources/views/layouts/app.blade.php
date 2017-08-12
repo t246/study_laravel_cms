@@ -14,6 +14,13 @@
 
     <body>
         <div class="container">
+            <table>
+                <tr>
+                    <td>id: {{ Auth::user()->id }}</td>
+                    <td>{{ Auth::user()->name }} さん</td>
+                    <td>登録日時    {{ Auth::user()->created_at }}</td>
+                </tr>
+            </table>
             <nav class="navbar navbar-default">
 
             </nav>
