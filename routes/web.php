@@ -40,6 +40,6 @@ Route::post('/books', function(Request $request) {
     //
 });
 
-Route::delete('/book/{book}', function(Book $book) {
+Route::delete('/books/{book}', function(Book $book) {
     //
 });

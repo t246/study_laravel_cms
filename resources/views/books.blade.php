@@ -19,7 +19,7 @@
                     </button>
                 <div>
             </div>
-            <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
+            {{ csrf_field() }}
         </form>
         @if(count($books) > 0)
             <div class="panel panel-default">
@@ -40,7 +40,14 @@
                                     <div>{{ $book->item_name }}</div>
                                 </td>
                                 <td>
+                                    <form action="{{ url('books/'.$book->id) }}" method="POST">
+                                        {{ csrf_field() }}
+                                        {{ method_field('DELETE') }}
 
+                                        <button type="submit" class="btn btn-danger">
+                                            <i class="glyphicon glyphicon-trash">削除</i>
+                                        </button>
+                                    </form>
                                 </td>
                             </tr>
                         @endforeach
