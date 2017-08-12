@@ -104,7 +104,10 @@
                     </table>
                 </div>
             </div>
-    @endif
+        @endif
+        <div class="col-md-4 col-md-offset-4">
+            {{ $books->links() }}
+        </div>
     <!-- Book: 既に登録されてる本のリスト -->
 
     </div>
